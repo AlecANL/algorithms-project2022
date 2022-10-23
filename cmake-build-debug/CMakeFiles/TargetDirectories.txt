@@ -1,0 +1,3 @@
+C:/Users/alexei/CLionProjects/basic-traductor/cmake-build-debug/CMakeFiles/basic_traductor.dir
+C:/Users/alexei/CLionProjects/basic-traductor/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/alexei/CLionProjects/basic-traductor/cmake-build-debug/CMakeFiles/rebuild_cache.dir
