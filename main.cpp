@@ -4,6 +4,7 @@ using namespace std;
 void mainMenu();
 
 void crudHandler();
+void codeTranslator();
 
 int main() {
     int option;
@@ -19,6 +20,7 @@ int main() {
         case 2:
             break;
         case 3:
+            codeTranslator();
             break;
         default:
             break;
