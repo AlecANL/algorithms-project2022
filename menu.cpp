@@ -3,7 +3,7 @@ using namespace std;
 
 void mainMenu() {
     cout<<"==========================="<<endl;
-    cout<<"1.  Manejo de las traducciones"<<endl;
+    cout<<"1. Manejo de las traducciones"<<endl;
     cout<<"2. Traduce un texto"<<endl;
     cout<<"3. Ingresa una porcion de codigo a traducir"<<endl;
     cout<<"============================"<<endl;

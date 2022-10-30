@@ -1,6 +1,4 @@
 #include <iostream>
-#include "translations.cpp"
-#include <cstring>
 #include <sstream>
 using namespace std;
 
@@ -16,7 +14,6 @@ struct TranslatedWord {
 string* removeDupWord(string str);
 string removeSpecialCharacter(string s);
 void getWords(string str);
-string arrayCharToString(char * word);
 string* removeDynamicStringDuplicated(string n[]);
 string replaceAll(string& s, string const& toReplace, string const& replaceWith);
 
@@ -92,16 +89,21 @@ void getWords(string str) {
 
     fclose(file);
 
+    cout<<"=========================="<<endl;
+    cout<<"      TEXTO ORIGINAL    "<<endl;
+    cout<<"=========================="<<endl;
+    cout<<str<<endl;
 
-    int position = 0;
 
+
+    cout<<"=========================="<<endl;
+    cout<<"      TEXTO TRADUCIDO    "<<endl;
     cout<<"=========================="<<endl;
     for (int i = 0; i < words->length(); ++i) {
 
         for (int j = 0; j < removedDuplicated->length(); ++j) {
             if (words[i] == removedDuplicated[j]) {
                 finalString = replaceAll(finalString, words[i], translations[i]);
-                position = i;
             }
         }
     }
@@ -111,22 +113,3 @@ void getWords(string str) {
 }
 
 
-////        cout<<removedDuplicated[idx]<<endl;
-//cout<<"Word: "<<removedDuplicated[idx]<<"|"<<arrayCharToString(translatedWord.word)<<" IDX: "<<idx<<endl;
-//if (arrayCharToString(translatedWord.word) == removedDuplicated[idx] && !removedDuplicated->empty()) {
-//cout<<"Hello world"<<endl;
-////            finalString = replaceAll(finalString, removedDuplicated[idx], arrayCharToString(translatedWord.translation));
-//}
-
-/*
- *
- *        for (int i = 0; i < removedDuplicated->length(); ++i) {
-            cout<<"Duplicated: "<<removedDuplicated[i]<<" P: "<<i<<" | "<<" Translated: "<<translatedWord.word<<" P: "<<i<<endl;
-            if (arrayCharToString(translatedWord.word) == removedDuplicated[i]) {
-                cout<<"Hello world"<<endl;
-            }
-
-        }
-        cout<<endl;
- *
- * */

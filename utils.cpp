@@ -60,8 +60,6 @@ string* removeDynamicStringDuplicated(string n[]) {
     int idx = 0;
     string* newArray = new string[n->length()];
 
-    cout<<n->length()<<endl;
-
     for (int i = 0; i < n->length(); ++i) {
         currentValue = n[i];
 
