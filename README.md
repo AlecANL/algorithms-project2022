@@ -18,3 +18,6 @@ using namespace std;
 * Dado que el desarrollo se ha llevado acabo en el IDE CLion de Jetbrains se recomienda correr sobre el mismo el proyecto. Ya que este contiene el archivo con las traducciones. De otra manera se tendria que ingresar de manera manual.
 
 ## DEMO
+
+https://user-images.githubusercontent.com/57077592/198860279-d2fdb24a-e475-4a9c-a30f-450fb4fbfb24.mp4
+
