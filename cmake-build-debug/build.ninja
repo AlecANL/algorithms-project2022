@@ -79,6 +79,12 @@ build CMakeFiles/basic_traductor.dir/code_traductor.cpp.obj: CXX_COMPILER__basic
   OBJECT_DIR = CMakeFiles\basic_traductor.dir
   OBJECT_FILE_DIR = CMakeFiles\basic_traductor.dir
 
+build CMakeFiles/basic_traductor.dir/text_traductor.cpp.obj: CXX_COMPILER__basic_traductor_Debug C$:/Users/alexei/CLionProjects/basic-traductor/text_traductor.cpp || cmake_object_order_depends_target_basic_traductor
+  DEP_FILE = CMakeFiles\basic_traductor.dir\text_traductor.cpp.obj.d
+  FLAGS = -g -std=gnu++14
+  OBJECT_DIR = CMakeFiles\basic_traductor.dir
+  OBJECT_FILE_DIR = CMakeFiles\basic_traductor.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target basic_traductor
@@ -87,7 +93,7 @@ build CMakeFiles/basic_traductor.dir/code_traductor.cpp.obj: CXX_COMPILER__basic
 #############################################
 # Link the executable basic_traductor.exe
 
-build basic_traductor.exe: CXX_EXECUTABLE_LINKER__basic_traductor_Debug CMakeFiles/basic_traductor.dir/main.cpp.obj CMakeFiles/basic_traductor.dir/utils.cpp.obj CMakeFiles/basic_traductor.dir/menu.cpp.obj CMakeFiles/basic_traductor.dir/crud.cpp.obj CMakeFiles/basic_traductor.dir/code_traductor.cpp.obj
+build basic_traductor.exe: CXX_EXECUTABLE_LINKER__basic_traductor_Debug CMakeFiles/basic_traductor.dir/main.cpp.obj CMakeFiles/basic_traductor.dir/utils.cpp.obj CMakeFiles/basic_traductor.dir/menu.cpp.obj CMakeFiles/basic_traductor.dir/crud.cpp.obj CMakeFiles/basic_traductor.dir/code_traductor.cpp.obj CMakeFiles/basic_traductor.dir/text_traductor.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\basic_traductor.dir

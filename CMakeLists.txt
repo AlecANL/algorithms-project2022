@@ -3,4 +3,4 @@ project(basic_traductor)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(basic_traductor main.cpp utils.cpp menu.cpp crud.cpp code_traductor.cpp)
+add_executable(basic_traductor main.cpp utils.cpp menu.cpp crud.cpp code_traductor.cpp text_traductor.cpp)

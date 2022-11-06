@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <sstream>
 using namespace std;
 
 char * stringToArrayChar(string word) {
@@ -71,4 +72,49 @@ string* removeDynamicStringDuplicated(string n[], int size) {
     }
 
     return newArray;
+}
+
+string removeSpecialCharacter(string s, int size) {
+    string tmp[size];
+    int j = 0;
+    for (int i = 0; i < s.size(); i++) {
+        if ((s[i] >= 'A' && s[i] <= 'Z') || (s[i] >='a' && s[i] <= 'z')) {
+            s[j] = s[i];
+            tmp[j] = s[i];
+            j++;
+        }
+    }
+
+    return s.substr(0, j);
+}
+
+string sanitizeText(string str) {
+    istringstream ss(str);
+    string word;
+    string a;
+
+    int i = 0;
+    while (ss >> word) {
+        if (!removeSpecialCharacter(word, str.length()).empty()) {
+            a += removeSpecialCharacter(word, str.length()) + " ";
+            i++;
+        }
+    }
+
+    return a;
+}
+
+string* split(string str) {
+    string line = str;
+    string* arr = new string[str.length()];
+
+
+    int i = 0;
+    stringstream ssin(line);
+    while (ssin.good() && i < str.length()){
+        ssin >> arr[i];
+        ++i;
+    }
+
+    return arr;
 }

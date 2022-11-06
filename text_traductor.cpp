@@ -2,7 +2,7 @@
 #include <sstream>
 using namespace std;
 
-const char *fileName = "words.dat";
+const char *fileTxtTranslatorName = "words.dat";
 
 struct TranslatedWord {
     int id;
@@ -11,40 +11,33 @@ struct TranslatedWord {
     char functionality[200];
 };
 
-
-string removeSpecialCharacter(string s, int size);
-void getWords(string str, string tmp);
-string* removeDynamicStringDuplicated(string n[], int size);
-string sanitizeText(string str);
 string* split(string str);
+string sanitizeText(string str);
+string* removeDynamicStringDuplicated(string n[], int size);
 string replaceAll(string& s, string const& toReplace, string const& replaceWith);
 
-void codeTranslator() {
-    string s;
-    getline(cin,s,'x');
-    string tmp;
-    string original = s;
+void getWords(string str);
 
-    tmp = replaceAll(s, "(", " ");
-    tmp = replaceAll(tmp, ")", " ");
-    tmp = replaceAll(tmp, "<<", " ");
-    tmp = replaceAll(tmp, ">>", " ");
-    tmp = replaceAll(tmp, "{", " ");
-    tmp = replaceAll(tmp, "}", " ");
+void textTranslator() {
+    cin.ignore();
 
-    getWords(original, tmp);
+    string txt;
+    cout<<"Ingresa el texto a traducir: ";
+    getline(cin, txt);
 
+    getWords(txt);
     system("pause");
 }
 
 
-void getWords(string str, string tmp) {
+
+void getWords(string str) {
     system("cls");
-    FILE* file = fopen(fileName, "rb");
+    FILE* file = fopen(fileTxtTranslatorName, "rb");
     TranslatedWord translatedWord;
     int idx = 0;
 
-    const string textSanitizer = sanitizeText(tmp);
+    const string textSanitizer = sanitizeText(str);
     string* txt = split(textSanitizer);
 
     string* removedDuplicated = removeDynamicStringDuplicated(txt, textSanitizer.length());
@@ -55,7 +48,7 @@ void getWords(string str, string tmp) {
 
 
     if (!file) {
-        file = fopen(fileName, "w+b");
+        file = fopen(fileTxtTranslatorName, "w+b");
     }
 
     fread(&translatedWord, sizeof(translatedWord), 1, file);
@@ -82,8 +75,8 @@ void getWords(string str, string tmp) {
 
     for (int i = 0; i < idx; ++i) {
         for (int j = 0; j < textSanitizer.length(); ++j) {
-            if (words[i] == removedDuplicated[j] && !removedDuplicated[j].empty()) {
-                finalString = replaceAll(finalString, words[i], translations[i]);
+            if (translations[i] == removedDuplicated[j] && !removedDuplicated[j].empty()) {
+                finalString = replaceAll(finalString, translations[i], words[i]);
             }
         }
     }
@@ -91,5 +84,4 @@ void getWords(string str, string tmp) {
 
     cout<<finalString<<endl;
 }
-
 

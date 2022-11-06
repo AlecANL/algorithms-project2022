@@ -5,6 +5,7 @@ void mainMenu();
 
 void crudHandler();
 void codeTranslator();
+void textTranslator();
 
 int main() {
     int option;
@@ -18,6 +19,7 @@ int main() {
             crudHandler();
             break;
         case 2:
+            textTranslator();
             break;
         case 3:
             codeTranslator();
