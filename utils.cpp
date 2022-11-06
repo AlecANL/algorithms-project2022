@@ -55,12 +55,12 @@ string replaceAll(string& s, string const& toReplace, string const& replaceWith)
     return s;
 }
 
-string* removeDynamicStringDuplicated(string n[]) {
+string* removeDynamicStringDuplicated(string n[], int size) {
     string prevValue, currentValue;
     int idx = 0;
-    string* newArray = new string[n->length()];
+    string* newArray = new string[size];
 
-    for (int i = 0; i < n->length(); ++i) {
+    for (int i = 0; i < size; ++i) {
         currentValue = n[i];
 
         if (prevValue != n[i]) {

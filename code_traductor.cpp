@@ -11,39 +11,64 @@ struct TranslatedWord {
     char functionality[200];
 };
 
-string* removeDupWord(string str);
-string removeSpecialCharacter(string s);
-void getWords(string str);
-string* removeDynamicStringDuplicated(string n[]);
+string removeSpecialCharacter(string s, int size);
+void getWords(string str, string tmp);
+string* removeDynamicStringDuplicated(string n[], int size);
+string sanitizeText(string str);
+string* split(string str);
 string replaceAll(string& s, string const& toReplace, string const& replaceWith);
 
 void codeTranslator() {
     string s;
     getline(cin,s,'x');
+    string tmp;
+    string original = s;
 
-    getWords(s);
+    tmp = replaceAll(s, "(", " ");
+    tmp = replaceAll(tmp, ")", " ");
+    tmp = replaceAll(tmp, "<<", " ");
+    tmp = replaceAll(tmp, ">>", " ");
+    tmp = replaceAll(tmp, "{", " ");
+    tmp = replaceAll(tmp, "}", " ");
 
-
+    getWords(original, tmp);
 
     system("pause");
 }
 
-string* removeDupWord(string str) {
+string sanitizeText(string str) {
     istringstream ss(str);
     string word;
-    string* words = new string[100];
+    string a;
+
     int i = 0;
     while (ss >> word) {
-        words[i] = removeSpecialCharacter(word);
-        i++;
+        if (!removeSpecialCharacter(word, str.length()).empty()) {
+            a += removeSpecialCharacter(word, str.length()) + " ";
+            i++;
+        }
     }
 
-    return words;
-    cout<<"Should be include: "<<words[0]<<endl;
+    return a;
 }
 
-string removeSpecialCharacter(string s) {
-    string tmp[100];
+string* split(string str) {
+    string line = str;
+    string* arr = new string[str.length()];
+
+
+    int i = 0;
+    stringstream ssin(line);
+    while (ssin.good() && i < str.length()){
+        ssin >> arr[i];
+        ++i;
+    }
+
+    return arr;
+}
+
+string removeSpecialCharacter(string s, int size) {
+    string tmp[size];
     int j = 0;
     for (int i = 0; i < s.size(); i++) {
         if ((s[i] >= 'A' && s[i] <= 'Z') || (s[i] >='a' && s[i] <= 'z')) {
@@ -56,19 +81,20 @@ string removeSpecialCharacter(string s) {
     return s.substr(0, j);
 }
 
-
-
-void getWords(string str) {
+void getWords(string str, string tmp) {
     system("cls");
     FILE* file = fopen(fileName, "rb");
     TranslatedWord translatedWord;
     int idx = 0;
-    int size = 1;
-    string* cleaningWords = removeDupWord(str);
-    string* removedDuplicated = removeDynamicStringDuplicated(cleaningWords);
+
+    const string textSanitizer = sanitizeText(tmp);
+    string* txt = split(textSanitizer);
+
+    string* removedDuplicated = removeDynamicStringDuplicated(txt, textSanitizer.length());
     string finalString = str;
     string* words = new string[100];
     string* translations = new string[100];
+
 
 
     if (!file) {
@@ -78,15 +104,12 @@ void getWords(string str) {
     fread(&translatedWord, sizeof(translatedWord), 1, file);
 
     do {
-
         words[idx] = (translatedWord.word);
         translations[idx] = (translatedWord.translation);
         fread(&translatedWord, sizeof(translatedWord), 1, file);
 
         idx += 1;
-        size++;
     } while (feof(file) == 0);
-
     fclose(file);
 
     cout<<"=========================="<<endl;
@@ -99,10 +122,10 @@ void getWords(string str) {
     cout<<"=========================="<<endl;
     cout<<"      TEXTO TRADUCIDO    "<<endl;
     cout<<"=========================="<<endl;
-    for (int i = 0; i < words->length(); ++i) {
 
-        for (int j = 0; j < removedDuplicated->length(); ++j) {
-            if (words[i] == removedDuplicated[j]) {
+    for (int i = 0; i < idx; ++i) {
+        for (int j = 0; j < textSanitizer.length(); ++j) {
+            if (words[i] == removedDuplicated[j] && !removedDuplicated[j].empty()) {
                 finalString = replaceAll(finalString, words[i], translations[i]);
             }
         }

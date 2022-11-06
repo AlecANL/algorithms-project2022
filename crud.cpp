@@ -243,7 +243,7 @@ void viewRegisterHandler() {
     char response;
     showTranslatedWordAdded();
 
-    cout<<"Desear regresar al menu principal ? (s/n): ";
+    cout<<"Desear regresar al menu de manejo de traducciones ? (s/n): ";
     cin>>response;
 
     if (response == 's' || response == 'S') {

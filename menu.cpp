@@ -16,7 +16,6 @@ void crudMenu() {
     cout<<"2. Actulizar"<<endl;
     cout<<"3. Eliminar"<<endl;
     cout<<"4. Ver registros"<<endl;
-    cout<<"0. Regresar al menu principal"<<endl;
     cout<<"============================"<<endl;
     cout<<"Ingresa una opcion: ";
 }
